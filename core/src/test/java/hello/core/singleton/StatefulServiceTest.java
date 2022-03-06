@@ -18,11 +18,12 @@ class StatefulServiceTest {
 
         //ThreadA: A사용자 10000원 주문
         statefulService1.order("userA",10000);
-        //ThreadB: B사용자 10000원 주문
+        //ThreadB: B사용자 20000원 주문
         statefulService2.order("userB",20000);
 
         //ThreadA: 사용자A 주문 금액 조회
         int price = statefulService1.getPrice();
+        //2만원이 나온다.
         System.out.println("price = " + price);
 
         Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
